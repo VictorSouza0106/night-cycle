@@ -1,1 +1,77 @@
-/* You can add global styles to this file, and also import other style files */
+
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
+@import url('https://cdn.materialdesignicons.com/5.1.45/css/materialdesignicons.min.css');
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+:root{
+    --header-height:60px;
+}
+
+// .card-1 {
+//     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+//     transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+// }
+
+// .card-2 {
+//     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+// }
+
+// .card-3 {
+//     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+// }
+
+// .card-4 {
+//     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.23);
+// }
+
+// .card-5 {
+//     box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+// }
+
+// $fontConfig: (
+//     display-4: mat-typography-level(112px, 112px, 300, 'Roboto', -0.0134em),
+//     display-3: mat-typography-level(56px, 56px, 400, 'Roboto', -0.0089em),
+//     display-2: mat-typography-level(45px, 48px, 400, 'Roboto', 0.0000em),
+//     display-1: mat-typography-level(34px, 40px, 400, 'Roboto', 0.0074em),
+//     headline: mat-typography-level(24px, 32px, 400, 'Roboto', 0.0000em),
+//     title: mat-typography-level(20px, 32px, 500, 'Roboto', 0.0075em),
+//     subheading-2: mat-typography-level(16px, 28px, 400, 'Roboto', 0.0094em),
+//     subheading-1: mat-typography-level(15px, 24px, 500, 'Roboto', 0.0067em),
+//     body-2: mat-typography-level(14px, 24px, 500, 'Roboto', 0.0179em),
+//     body-1: mat-typography-level(14px, 20px, 400, 'Roboto', 0.0179em),
+//     button: mat-typography-level(14px, 14px, 500, 'Roboto', 0.0893em),
+//     caption: mat-typography-level(12px, 20px, 400, 'Roboto', 0.0333em),
+//     input: mat-typography-level(inherit, 1.125, 400, 'Roboto', 1.5px)
+// );
+
+
+// @include mat-core($fontConfig);
+
+// // Theme Config
+
+// body {
+//     --primary-color: #4686FC;
+//     --primary-lighter-color: #7B1FA2;
+//     --primary-darker-color: #6A1B9A;
+//     --text-primary-color: $light-primary-text;
+//     --text-primary-lighter-color: $dark-primary-text;
+//     --text-primary-darker-color: $light-primary-text;
+// }
+
+// $mat-primary: (
+//     main: #0c1b2b,
+//     lighter: #7B1FA2,
+//     darker: #6A1B9A,
+//     200: #6A1B9A, // For slide toggle,
+//     contrast : (
+//         main: $light-primary-text,
+//         lighter: $dark-primary-text,
+//         darker: $light-primary-text,
+//     )
+// );
+
+// $theme-primary: mat-palette($mat-primary, main, lighter, darker);
