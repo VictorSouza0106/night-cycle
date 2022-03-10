@@ -1,0 +1,118 @@
+.input-style {
+
+    width: 100%;
+    position: relative;
+    transition: 1s;
+
+    min-height: 65px;
+
+    form {
+        width: 100%;
+    
+        input {
+            width: 100%;
+            height: 32px;
+            position: absolute;
+            background-color: transparent;
+            border: none;
+            border-bottom: solid 1px var(--primary-color);
+
+            margin-top: 10px;
+        }
+
+        
+        .input-error {
+            border-bottom: solid 1px red !important
+        }
+
+        input:focus {
+            border: none;
+            outline: none;
+            border-bottom: solid 2px var(--primary-color);
+        }
+
+        label {
+            position:absolute;
+            font-size: 1.2rem;
+            font-weight: bold;
+            left: 16px;
+            top: 17px;
+            transition: all 0.2s linear;
+            color: var(--primary-dark-color);
+        }
+
+        .label-error {
+            color: red;
+        }
+
+        input:focus + label, input:focus + .label-error {
+            color: var(--primary-light-color);
+            left: 6px;
+            top: -7px;
+            font-size: 0.9rem
+        };
+
+        .has-content {
+            
+            left: 6px !important;
+            top: -7px !important;
+            font-size: 0.9rem !important
+        }
+
+        .alert-message {
+            position: absolute;
+            bottom: 0;
+
+            i {
+                color: red;
+            }
+
+            span {
+                font-size: 0.7rem;
+                color: red;
+            }
+        }
+    }
+}
+
+/* explique as principais diferenças entre a primeira e a segunda revolução industrial
+ do ponto de vista do progresso tecnologico e em relação ao modo de vida e aos impactos sociais?
+
+ Quais as principais caracteristicas da 2 revoluação industrial como se caracterizaram a produção e a produtividade nesse periodo de tempo?
+
+ Explique como se deu a passagem do empirismo para o cientificismo?
+ 
+Pouco dps da 1º começou grandes 40 anos depois.
+2  avanços eletricos, motores e telegrafo e ferrovias
+fordismo  massa  e teoorlistmo desenhos participação das duas grandes guerras
+
+A 1º revolução industrial trouxe grandes avanços tecnologicos, possibilitando a sociedade progredir em seu desenvolvimento
+e em seus processos, aproximadaente 40 anos depois se via a necessidade de produção mais acelerada e eficaz e com menos custo, a partir disso tivemos
+grandes avanços como a a eletricidade , a ferrovia , o telegrafo e o motor a combustao.
+
+Grandes fatores que engatilharam a segunda evolução industrial foi a criação do taylorismo, que tinha como base a disociação da execução do trabalho
+e o desenvolvimento técnico dos desenhos. o Trabalho Taylorizado é eficaz, especializado, insalubre e causava uma grande segregação entre mão de 
+obra barata e trabalho intectual , Baseado nessas ideias foi criado o fordismo, que trazia em suas principais ideias a separação 
+de processos para agilizar a linha de produção focado em especializar ainda mais seus funcionarios em certas aréas e funções. Essas modelo
+era utilizado na padronização em larga escalas des setores industriais. sendo assim causanvo uma grande alienação, 
+pois os funcionarios não sabiam o valor real de seus esforços.
+
+- Teve sociedade com mais luxo e tecnoligia e grande produção de produtos
+- Desigualdade social, e mental dos trabalhadorres e a destruição dos meio ambiente
+
+
+
+
+acumulo de capital e grande destruição ao meio ambiente
+
+ Escrita 
+
+ 1 - contextualização do tema
+
+ ex: Apassagem do 1º para 2º RI (Progresso tecnologico)
+
+ 2 - Desenvolvimento - Resposta (Texto, Graficos, dados)
+
+ Aplica o seu conhecimento sobre o tema a apartir da demonstração dos dados
+ */
+

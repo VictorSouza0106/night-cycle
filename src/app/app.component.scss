@@ -1,7 +1,4 @@
 .navbar {
-    
-    display: flex;
-    align-items: center;
 
     min-height: 60px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -9,7 +6,6 @@
 
     .logo {
 
-        margin-left: 32px;
         img {
             width: 32px;
         }
@@ -21,11 +17,7 @@
 
         li {
             margin: 0 24px;
+            white-space: nowrap;
         }
-    }
-
-    .nav-options {
-        display: flex;
-        justify-content: flex-end;
     }
 }

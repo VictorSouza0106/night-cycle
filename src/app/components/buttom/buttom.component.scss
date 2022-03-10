@@ -1,0 +1,22 @@
+.button-size {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+
+    width: 100%;
+    min-height: 25px;
+
+    padding: 0 16px;
+
+    background-color: var(--primary-color);
+    color: var(--white-color);
+
+    cursor: pointer;
+
+    .content {
+        font-size: 1em;
+        margin: 6px 0;
+    }
+}

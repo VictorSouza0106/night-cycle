@@ -1,0 +1,41 @@
+<div class="w-100 h-100 d-flex">
+  <div class="page-container w-100">
+    <div class="login-panel w-100">
+      <div class="login card">
+        <c-input [label]="'Usuário'" icon="mdi mdi-account"></c-input>
+        <c-input [label]="'Senha'" icon="mdi mdi-account-key"></c-input>
+        <c-buttom>
+          <label>Entrar</label>
+        </c-buttom>
+        <c-buttom  (click)="change()">
+          <label>Cadastrar-se</label>
+        </c-buttom>
+      </div>
+      <div class="register card">
+        <c-input [label]="'Usuário'" icon="mdi mdi-account"></c-input>
+        <c-input [label]="'Email'" icon="mdi mdi-email"></c-input>
+        <c-input [label]="'Senha'" icon="mdi mdi-lock"></c-input>
+        <c-input [label]="'Confirmar Senha'" icon="mdi mdi-lock-check"></c-input>
+        <c-buttom>
+          <label>Finalizar cadastro</label>
+        </c-buttom>
+        <c-buttom  (click)="change()">
+          <label>Ja sou cadastrado</label>
+        </c-buttom>
+      </div>
+    </div>
+    <!-- TODO Translate -->
+  </div>
+  <div [ngStyle]="{'transform': 'translate(' + (hasAccount ? '0' : '-100%') +')'}"  class="login-img-panel" style="background-color: #c8a3eb">
+
+    <img [@slideIn]="loginSlideIn" [@slideOut]="loginSlideOut" style="position: absolute;transition: 1s;" src="./../../../assets/svgs/login/Login-rafiki_3.svg">
+    <img [@slideIn]="loginSlideIn" [@slideOut]="loginSlideOut" style="position: absolute;" src="./../../../assets/svgs/login/Login-rafiki_2.svg">
+    <img [@slideIn]="loginSlideIn" [@slideOut]="loginSlideOut" style="position: absolute;" src="./../../../assets/svgs/login/Login-rafiki_1.svg">
+
+    <img [@slideIn]="signSlideIn" [@slideOut]="signSlideOut"style="position: absolute;transition: 1s;" src="./../../../assets/svgs/sign/Accept terms-rafiki_3.svg">
+    <img [@slideIn]="signSlideIn" [@slideOut]="signSlideOut" style="position: absolute;" src="./../../../assets/svgs/sign/Accept terms-rafiki_2.svg">
+    <img [@slideIn]="signSlideIn" [@slideOut]="signSlideOut" style="position: absolute;" src="./../../../assets/svgs/sign/Accept terms-rafiki_1.svg">
+
+
+  </div>
+</div>

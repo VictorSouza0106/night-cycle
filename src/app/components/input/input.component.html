@@ -1,0 +1,21 @@
+<div class="input-style">
+  <form [formGroup]="form">
+    <input
+      [ngClass]="{ 'input-error': hasError() }"
+      (focus)="setOnFocus(true)"
+      (blur)="setOnFocus(false)"
+      formControlName="input"
+      [type]="type"
+    />
+    <label
+      [ngClass]="{ 'has-content': form.valid, 'label-error': hasError() }"
+    >
+      <i [ngClass]="icon" style="margin-right: 12px;"></i>
+      <span>{{label}}</span>
+    </label>
+    <div class="alert-message" *ngIf="hasError()">
+      <i class="mdi mdi-alert-circle-outline"></i>
+      <span>Esse campo é obrigatorio</span>
+    </div>
+  </form>
+</div>
