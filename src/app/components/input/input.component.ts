@@ -1,21 +1,31 @@
 import {
   Component,
   EventEmitter,
+  forwardRef,
   Input,
   OnChanges,
   OnInit,
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, ControlContainer, ControlValueAccessor, FormBuilder, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
 import { TEXT_INPUT_TYPES } from '../components.const';
 
 @Component({
   selector: 'c-input',
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => InputComponent),
+      multi: true
+    }
+  ],
 })
-export class InputComponent implements OnInit, OnChanges {
+export class InputComponent implements ControlValueAccessor, OnInit, OnChanges {
+
+  @Input() formControlName: string = null;
 
   @Input() type: string = 'text';
   @Input() label: string = '';
@@ -25,29 +35,27 @@ export class InputComponent implements OnInit, OnChanges {
 
   private isFocused: boolean = false;
 
-  public form: FormGroup;
+  public control: any;
 
   constructor(
     private formbuilder: FormBuilder,
+    private controlContainer: ControlContainer
   ) {}
 
   ngOnInit(): void {
-    this.initForm();
+    if(this.controlContainer && this.formControlName){
+      this.control = this.controlContainer.control.get(this.formControlName);
+
+      console.log("CONT", this.control)
+
+      // this.control.valueChanges.subscribe(inputText => {
+      //   this.onContentChange.emit(inputText);
+      // });
+   }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     this.verifyInputType();
-  }
-
-  private initForm(){ 
-    this.form = this.formbuilder.group({
-      input: [null, Validators.required],
-    });
-
-    this.form.get('input').valueChanges.subscribe(inputText => {
-      console.log('Valid and touched', this.form.valid, this.form.get('input').touched, this.isFocused)
-      this.onContentChange.emit(inputText);
-    })
   }
 
   private verifyInputType() : void {
@@ -62,6 +70,21 @@ export class InputComponent implements OnInit, OnChanges {
 
   public hasError(): boolean{
     // console.log('Err 2', this.form.get('input').errors)
-    return !this.form.valid && this.form.get('input').touched && !this.isFocused;
+    // return !this.form.valid && this.form.get('input').touched && !this.isFocused;
+    return false;
+  }
+
+  registerOnChange(){
+
+  }
+
+  registerOnTouched(){
+
+  }
+  writeValue(){
+
+  }
+  setDisabledState(){
+
   }
 }

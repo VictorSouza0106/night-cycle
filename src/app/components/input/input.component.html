@@ -1,14 +1,14 @@
 <div class="input-style">
-  <form [formGroup]="form">
+  <form>
     <input
       [ngClass]="{ 'input-error': hasError() }"
       (focus)="setOnFocus(true)"
       (blur)="setOnFocus(false)"
-      formControlName="input"
+      [formControl]="control"
       [type]="type"
     />
     <label
-      [ngClass]="{ 'has-content': form.valid, 'label-error': hasError() }"
+      [ngClass]="{ 'has-content': true, 'label-error': hasError() }"
     >
       <i [ngClass]="icon" style="margin-right: 12px;"></i>
       <span>{{label}}</span>

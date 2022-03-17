@@ -6,117 +6,158 @@ import {
   animate,
 } from '@angular/animations';
 
-export const SLIDE_IN = trigger('slideIn', [
-  state(
-    'up',
-    style({
-      opacity: 1,
-      transform: 'translate(0PX)'
-    })
-  ),
+// TODO adicionar isso na documentação
+// Padronização de nomes para padronização
+// NOME ANIMAÇÃO - DIRECTION - IN / OUT
 
-  state(
-    'down',
-    style({
-      opacity: 1,
-      transform: 'translate(0PX)'
-    })
-  ),
+export const SLIDE_ANIMATIONS = {
+  slideUpIn: 'up-in',
+  slideUpOut: 'up-out',
+  slideDownIn: 'down-in',
+  slideDownOut: 'down-out',
+  slideLeftIn: 'left-in',
+  slideLeftOut: 'left-out',
+  slideRightIn: 'right-in',
+  slideRightOut: 'right-out',
+  slideHidden: 'hidden'
+}
 
+export const SLIDE = trigger('slide', [  
   state(
-    'left',
-    style({
-      opacity: 1,
-      transform: 'translate(0PX)'
-    })
-  ),
-
-  state(
-    'right',
-    style({
-      opacity: 1,
-      transform: 'translate(0PX)'
-    })
-  ),
-
-  state(
-    'hidden',
+    SLIDE_ANIMATIONS.slideHidden,
     style({
       opacity: 0,
     })
   ),
 
-  transition('* => up', [
-    style({ opacity: 0, transform: 'translateY(40px)' }),
+  // UP ANIMATION
+  state(
+    SLIDE_ANIMATIONS.slideUpIn,
+    style({
+      opacity: 1,
+      transform: 'translate(0PX)',
+    })
+  ),
+
+  transition('* => up-in', [
+    style({ 
+      opacity: 0, 
+      transform: 'translateY(40px)'
+    }),
     animate('600ms 0s ease-out'),
   ]),
 
-  transition('* => down', [
-    style({ opacity: 0, transform: 'translateY(-40px)' }),
-    animate('600ms 0s ease-in'),
+  state(
+    SLIDE_ANIMATIONS.slideUpOut,
+    style({
+      opacity: 0,
+      transform: 'translateY(40PX)',
+    })
+  ),
+
+  transition('* => up-in', [
+    style({ 
+      opacity: 1,
+    }),
+    animate('600ms 0s ease-out'),
   ]),
 
-  transition('* => left', [
-    style({ opacity: 0, transform: 'translateX(-40px)' }),
-    animate('600ms 0s ease-in'),
+  // DOWN ANIMATION
+
+  state(
+    SLIDE_ANIMATIONS.slideDownIn,
+    style({
+      opacity: 1,
+      transform: 'translate(0PX)',
+    })
+  ),
+
+  transition('* => down-in', [
+    style({ 
+      opacity: 0, 
+      transform: 'translateY(-40px)'
+    }),
+    animate('600ms 0s ease-out'),
   ]),
 
-  transition('* => right', [
-    style({ opacity: 0, transform: 'translateX(40px)' }),
-    animate('600ms 0s ease-in'),
+  state(
+    SLIDE_ANIMATIONS.slideDownOut,
+    style({
+      opacity: 0,
+      transform: 'translateY(-40PX)',
+    })
+  ),
+
+  transition('* => down-out', [
+    style({ 
+      opacity: 1,
+    }),
+    animate('600ms 0s ease-out'),
+  ]),
+
+  // LEFT ANIMATION
+
+  state(
+    SLIDE_ANIMATIONS.slideLeftIn,
+    style({
+      opacity: 1,
+      transform: 'translate(0PX)',
+    })
+  ),
+
+  transition('* => left-in', [
+    style({ 
+      opacity: 0, 
+      transform: 'translateX(-40px)'
+    }),
+    animate('600ms 0s ease-out'),
+  ]),
+
+  state(
+    SLIDE_ANIMATIONS.slideLeftOut,
+    style({
+      opacity: 0,
+      transform: 'translateX(-40PX)',
+    })
+  ),
+
+  transition('* => left-out', [
+    style({ 
+      opacity: 1,
+    }),
+    animate('600ms 0s ease-out'),
+  ]),
+
+  // RIGHT ANIMATION
+
+  state(
+    SLIDE_ANIMATIONS.slideRightIn,
+    style({
+      opacity: 1,
+      transform: 'translate(0PX)',
+    })
+  ),
+
+  transition('* => right-in', [
+    style({ 
+      opacity: 0, 
+      transform: 'translateX(40px)'
+    }),
+    animate('600ms 0s ease-out'),
+  ]),
+
+  state(
+    SLIDE_ANIMATIONS.slideRightOut,
+    style({
+      opacity: 0,
+      transform: 'translateX(40PX)',
+    })
+  ),
+
+  transition('* => right-out', [
+    style({ 
+      opacity: 1,
+    }),
+    animate('600ms 0s ease-out'),
   ]),
 ]);
-
-export const SLIDE_OUT = trigger('slideOut', [
-    state(
-      'up',
-      style({
-        opacity: 0,
-        transform: 'translateY(-40px)'
-      })
-    ),
-  
-    state(
-      'down',
-      style({
-        opacity: 0,
-        transform: 'translateY(40px)'
-      })
-    ),
-  
-    state(
-      'left',
-      style({
-        opacity: 0,
-        transform: 'translateX(40px)'
-      })
-    ),
-  
-    state(
-      'right',
-      style({
-        opacity: 0,
-        transform: 'translateX(-40px)'
-      })
-    ),
-  
-    transition('* => up', [
-      style({ opacity: 1}),
-      animate('600ms 0s ease-out'),
-    ]),
-  
-    transition('* => down', [
-      style({ opacity: 1}),
-      animate('600ms 0s ease-in'),
-    ]),
-  
-    transition('* => left', [
-      style({ opacity: 1}),
-      animate('600ms 0s ease-in'),
-    ]),
-  
-    transition('* => right', [
-      style({ opacity: 1}),
-      animate('600ms 0s ease-in'),
-    ]),
-  ]);

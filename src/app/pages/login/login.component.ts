@@ -1,56 +1,110 @@
 import { Component, OnInit } from '@angular/core';
-import { SLIDE_IN, SLIDE_OUT } from 'src/animations/slide.animation';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { SLIDE, SLIDE_ANIMATIONS } from 'src/animations/slide.animation';
+import { ZOOM, ZOOM_ANIMATIONS } from 'src/animations/zoom.animation';
+
+const {
+  zoomDecreaseIn,
+  zoomDecreaseOut,
+  zoomIncreaseIn,
+  zoomIncreaseOut,
+  zoomHidden,
+} = ZOOM_ANIMATIONS;
+
+const {
+  slideDownIn,
+  slideDownOut,
+  slideLeftIn,
+  slideLeftOut,
+  slideRightIn,
+  slideRightOut,
+  slideUpIn,
+  slideUpOut,
+  slideHidden,
+} = SLIDE_ANIMATIONS
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  animations: [SLIDE_IN, SLIDE_OUT]
+  animations: [SLIDE,ZOOM]
 })
+
 export class LoginComponent implements OnInit {
+
+  public loginBackgroundState: string = slideRightIn;
+  public loginCellState: string = zoomIncreaseIn;
+  public loginPersonState: string = slideLeftIn;
+
+  public registerBackgroundState: string = slideHidden;
+  public registerPaperState: string = zoomHidden;
+  public registerPersonState: string = slideHidden;
 
   public hasAccount: boolean = true;
 
-  public loginSlideIn:string="left";
-  public loginSlideOut: string;
+  public loginForm: FormGroup;
+  public registerForm: FormGroup;
 
-  public signSlideIn:string='hidden';
-  public signSlideOut: string;
-
-  constructor() { }
+  constructor(
+    private formBuilder: FormBuilder,
+  ) { }
 
   ngOnInit(): void {
+    this.initForms();
   }
 
-  public change(){
+  private initForms(): void{
+    this.loginForm = this.formBuilder.group({
+      email: null,
+      password: [null],
+    });
+    console.log('LoginFr', this.loginForm)
+    this.registerForm = this.formBuilder.group({
+
+    })
+  };
+
+  private clearLoginForm(): void{
+
+  };
+
+  private clearRegisterForm(): void {
+
+  }
+
+  private goToLogin(): void {
+    setTimeout(() => {
+      this.loginBackgroundState = slideRightIn;
+      this.loginCellState = zoomIncreaseIn;
+      this.loginPersonState = slideLeftIn;
+    }, 750);
+
+    setTimeout(() => {
+      this.registerBackgroundState = slideLeftOut;
+      this.registerPaperState = zoomDecreaseOut;
+      this.registerPersonState = slideLeftOut;
+    }, 200);
+  }
+
+  private goToRegister(): void{
+    setTimeout(() => {
+      this.loginBackgroundState = slideRightOut;
+      this.loginCellState = zoomIncreaseOut;
+      this.loginPersonState = slideLeftOut;
+    }, 200);
+
+    setTimeout(() => {
+      this.registerBackgroundState = slideLeftIn;
+      this.registerPaperState = zoomDecreaseIn;
+      this.registerPersonState = slideLeftIn;
+    }, 750);
+  }
+
+
+  public change(): void{
+    this.hasAccount ? this.goToRegister() : this.goToLogin();
     this.hasAccount = !this.hasAccount;
 
-    if(this.hasAccount){
-      setTimeout(() => {
-        this.loginSlideIn = 'left';
-        this.loginSlideOut = null;
-      }, 1000);
-
-      setTimeout(() => {
-        this.signSlideOut = 'left';
-        this.signSlideIn = null;
-      }, 200);
-    }
-    else {
-      setTimeout(() => {
-        this.loginSlideOut = 'left';
-        this.loginSlideIn = null;
-      }, 200);
-
-      setTimeout(() => {
-        this.signSlideIn = 'left';
-        this.signSlideOut = null;
-      }, 1000);
-    }
-    
-
-
-
+    console.log('FORM', this.loginForm.get('email').value)
   }
-
 }

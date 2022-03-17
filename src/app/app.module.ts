@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -19,6 +20,7 @@ import { LoginComponent } from './pages/login/login.component';
     AppRoutingModule, 
     BrowserAnimationsModule,
     ComponentsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
