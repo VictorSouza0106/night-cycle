@@ -6,7 +6,7 @@ import { Subject } from 'rxjs';
 })
 export class WindowService {
 
-  public isMobile: Subject<Boolean>;
+  public isMobile: Subject<boolean>;
 
   constructor() {
     this.isMobile = new Subject();

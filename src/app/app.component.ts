@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { WindowService } from './services/window.service';
 
 const MOBILE_WIDTH = 768;
@@ -8,7 +8,7 @@ const MOBILE_WIDTH = 768;
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
 
   private isMobile: boolean = false;
   
