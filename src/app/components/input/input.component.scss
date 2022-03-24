@@ -6,71 +6,81 @@
 
     min-height: 65px;
 
-    form {
+
+    input {
         width: 100%;
+        height: 32px;
+        position: absolute;
+        background-color: transparent;
+        border: none;
+        border-bottom: solid 1px var(--primary-color);
+
+        margin-top: 10px;
+    }
+
     
-        input {
-            width: 100%;
-            height: 32px;
-            position: absolute;
-            background-color: transparent;
-            border: none;
-            border-bottom: solid 1px var(--primary-color);
+    .input-error {
+        border-bottom: solid 1px red !important
+    }
 
-            margin-top: 10px;
-        }
+    input::placeholder{
+        opacity: 0;
+    }
 
+    input:focus::placeholder{
+        opacity: 1;
+    }
+
+    input:focus {
+        border: none;
+        outline: none;
+        border-bottom: solid 2px var(--primary-color);
+    }
+
+    label {
+        position:absolute;
+        font-size: 1.2rem;
+        font-weight: bold;
+        left: 16px;
+        top: 17px;
+        transition: all 0.2s linear;
+        color: var(--primary-dark-color);
+        cursor: text;
+    }
+
+    input:focus + label {
+        color: var(--primary-light-color)
+    };
+    
+
+    .label-error {
+        color: red !important;
+    }
+
+    input:focus + label, input:focus + .label-error {
+        left: 6px;
+        top: -7px;
+        font-size: 0.9rem
+    };
+
+    .has-content {
         
-        .input-error {
-            border-bottom: solid 1px red !important
-        }
+        left: 6px !important;
+        top: -7px !important;
+        font-size: 0.9rem !important
+    }
 
-        input:focus {
-            border: none;
-            outline: none;
-            border-bottom: solid 2px var(--primary-color);
-        }
+    .alert-message {
+        position: absolute;
+        bottom: 0;
 
-        label {
-            position:absolute;
-            font-size: 1.2rem;
-            font-weight: bold;
-            left: 16px;
-            top: 17px;
-            transition: all 0.2s linear;
-            color: var(--primary-dark-color);
-        }
-
-        .label-error {
+        i {
             color: red;
         }
 
-        input:focus + label, input:focus + .label-error {
-            color: var(--primary-light-color);
-            left: 6px;
-            top: -7px;
-            font-size: 0.9rem
-        };
-
-        .has-content {
-            
-            left: 6px !important;
-            top: -7px !important;
-            font-size: 0.9rem !important
-        }
-
-        .alert-message {
-            position: absolute;
-            bottom: 0;
-
-            i {
-                color: red;
-            }
-
-            span {
-                font-size: 0.7rem;
-                color: red;
-            }
+        span {
+            font-size: 0.7rem;
+            color: red;
         }
     }
 }

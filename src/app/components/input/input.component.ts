@@ -1,14 +1,14 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   Component,
   EventEmitter,
   forwardRef,
   Input,
-  OnChanges,
   OnInit,
   Output,
-  SimpleChanges,
 } from '@angular/core';
-import { AbstractControl, ControlContainer, ControlValueAccessor, FormBuilder, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {AbstractControl, ControlValueAccessor, FormGroupDirective, NG_VALUE_ACCESSOR} from '@angular/forms';
 import { TEXT_INPUT_TYPES } from '../components.const';
 
 @Component({
@@ -18,73 +18,123 @@ import { TEXT_INPUT_TYPES } from '../components.const';
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => InputComponent),
+      useExisting: forwardRef(() => InputTextComponent),
       multi: true
     }
   ],
 })
-export class InputComponent implements ControlValueAccessor, OnInit, OnChanges {
+export class InputTextComponent implements ControlValueAccessor, OnInit {
 
-  @Input() formControlName: string = null;
+  @Input() formControlName: string;
 
   @Input() type: string = 'text';
   @Input() label: string = '';
   @Input() icon: string = '';
+  @Input() placeholder: string = '';
 
-  @Output() onContentChange: EventEmitter<string> = new EventEmitter();
+  @Input() errorMessage: string;
+  @Input() keepError: boolean = false;
 
-  private isFocused: boolean = false;
+  @Output() focus: EventEmitter<void> = new EventEmitter();
+  @Output() blur: EventEmitter<void> = new EventEmitter();
 
-  public control: any;
+  public value: string = '';
+
+  public onChange: any = ()=> {};
+  public onTouched: any = () => {};
+
+  public disabled: boolean = false;
+
+  private control: AbstractControl;
 
   constructor(
-    private formbuilder: FormBuilder,
-    private controlContainer: ControlContainer
+    private rootFormGroup: FormGroupDirective
   ) {}
-
+  
   ngOnInit(): void {
-    if(this.controlContainer && this.formControlName){
-      this.control = this.controlContainer.control.get(this.formControlName);
+    this.validateType();
 
-      console.log("CONT", this.control)
-
-      // this.control.valueChanges.subscribe(inputText => {
-      //   this.onContentChange.emit(inputText);
-      // });
-   }
+    this.control = this.rootFormGroup.control.get(this.formControlName) as AbstractControl;
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    this.verifyInputType();
+  private validateType(): void{
+    let isValidType: boolean = false;
+    let availableTypes: string = '|'
+    
+    TEXT_INPUT_TYPES.find((type: string) => {
+      availableTypes += ` ${type} |`
+
+      if (type === this.type)
+        isValidType = true;
+    });
+
+    //TODO TRADUZIR ERRO
+    if (!isValidType)
+      throw new Error(`This type is not valid. Try these types -> ${availableTypes}`);
   }
 
-  private verifyInputType() : void {
-    if (!TEXT_INPUT_TYPES.includes(this.type))
-      throw Error('This type is not supported by input component');
+  private setDefaultErrorMessages(error: string): void {
+    //TODO Translate Returns
+    switch (error) {
+      case 'required':
+        this.errorMessage = 'Este Campo é obrigatorio';
+        break;
+        
+      case 'email':
+        this.errorMessage = 'Este Email é invalido';
+        break;
+    
+      default:
+        this.errorMessage = 'Este campo é invalido';
+    }
   }
 
-  public setOnFocus(isFocused: boolean): void{
-    console.log(isFocused)
-    this.isFocused = isFocused;
+  public writeValue(value: string): void{
+    this.value = value;
   }
 
-  public hasError(): boolean{
-    // console.log('Err 2', this.form.get('input').errors)
-    // return !this.form.valid && this.form.get('input').touched && !this.isFocused;
-    return false;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  public registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+ 
+  public registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+ }
+
+  public setDisabledState(isDisable: boolean): void{
+    this.disabled = isDisable
   }
 
-  registerOnChange(){
-
+  public changeValue(): void{
+    this.onChange(this.value);
   }
 
-  registerOnTouched(){
+  public isFieldValid(): boolean {
 
+    let hasError: boolean = false;
+    
+    if (!this.control?.errors) return false;
+
+    Object.keys(this.control.errors).forEach(error => {
+      this.setDefaultErrorMessages(error);
+      hasError = true;
+    })
+
+    return hasError && this.control.touched;
   }
-  writeValue(){
 
+  public onBlur(): void {
+    this.blur.emit();
   }
-  setDisabledState(){
 
+  public onFocus(): void{
+    if(!this.keepError)
+      this.control.markAsUntouched();
+    this.focus.emit();
+  }
+
+  public inputFocus(): void{
+    document.getElementById('text-input').focus();
   }
 }
