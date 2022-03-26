@@ -59,10 +59,10 @@ export class InputTextComponent implements ControlValueAccessor, OnInit {
 
   private validateType(): void{
     let isValidType: boolean = false;
-    let availableTypes: string = '|'
+    let availableTypes: string = '|';
     
     TEXT_INPUT_TYPES.find((type: string) => {
-      availableTypes += ` ${type} |`
+      availableTypes += ` ${type} |`;
 
       if (type === this.type)
         isValidType = true;
@@ -103,7 +103,7 @@ export class InputTextComponent implements ControlValueAccessor, OnInit {
  }
 
   public setDisabledState(isDisable: boolean): void{
-    this.disabled = isDisable
+    this.disabled = isDisable;
   }
 
   public changeValue(): void{
@@ -119,7 +119,7 @@ export class InputTextComponent implements ControlValueAccessor, OnInit {
     Object.keys(this.control.errors).forEach(error => {
       this.setDefaultErrorMessages(error);
       hasError = true;
-    })
+    });
 
     return hasError && this.control.touched;
   }

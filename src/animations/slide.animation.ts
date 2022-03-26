@@ -20,7 +20,7 @@ export const SLIDE_ANIMATIONS = {
   slideRightIn: 'right-in',
   slideRightOut: 'right-out',
   slideHidden: 'hidden'
-}
+};
 
 export const SLIDE = trigger('slide', [  
   state(

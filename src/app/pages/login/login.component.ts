@@ -17,7 +17,7 @@ const {
   slideRightIn,
   slideRightOut,
   slideHidden,
-} = SLIDE_ANIMATIONS
+} = SLIDE_ANIMATIONS;
 
 @Component({
   selector: 'app-login',

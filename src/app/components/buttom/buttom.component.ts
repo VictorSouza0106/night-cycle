@@ -11,6 +11,6 @@ export class ButtomComponent implements OnInit {
   
 
   ngOnInit(): void {
-    console.log('Not Implemented -> OnInit')
+    console.log('Not Implemented -> OnInit');
   }
 }

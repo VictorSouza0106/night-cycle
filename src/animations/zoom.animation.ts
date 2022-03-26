@@ -12,7 +12,7 @@ export const ZOOM_ANIMATIONS = {
   zoomDecreaseIn: 'decrease-in',
   zoomDecreaseOut: 'decrease-out',
   zoomHidden: 'hidden'
-}
+};
 
 export const ZOOM = trigger('zoom', [
   state(
