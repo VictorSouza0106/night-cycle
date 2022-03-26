@@ -1,4 +1,4 @@
-import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy } from '@angular/core';
 import { WindowService } from './services/window.service';
 
 const MOBILE_WIDTH = 768;
@@ -8,7 +8,7 @@ const MOBILE_WIDTH = 768;
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent implements OnDestroy {
 
   private isMobile: boolean = false;
   
@@ -17,16 +17,11 @@ export class AppComponent implements OnInit, OnDestroy {
   ){}
 
   @HostListener('window:resize', ['$event'])
-  onResize(event: any) {
+  onResize(): void {
     if (window.innerWidth < MOBILE_WIDTH)
       this.windowService.isMobile.next(true);
     else
       this.windowService.isMobile.next(false);
-  }
-
-  ngOnInit(): void {
-      this.windowService.isMobile.subscribe((isMob) => {
-      });
   }
 
   ngOnDestroy(): void {

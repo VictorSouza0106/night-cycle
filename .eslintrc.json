@@ -14,7 +14,8 @@
       "plugin:@typescript-eslint/recommended"
   ],
   "rules": {
-    "@typescript-eslint/explicit-function-return-type": "warn"
+    "@typescript-eslint/explicit-function-return-type": "warn",
+    "@typescript-eslint/no-inferrable-types": "off"
   },
   "overrides": [
     {
@@ -35,6 +36,7 @@
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
+        "@typescript-eslint/no-inferrable-types": "off",
         "@angular-eslint/directive-selector": [
           "error",
           {
@@ -47,13 +49,13 @@
           "error",
           {
             "type": "element",
-            "prefix": ["app", "c"],
+            "prefix": ["app", "ch"],
             "style": "kebab-case"
           }
         ],
         "@angular-eslint/no-output-native": [
           "off"
-        ]     
+        ]
       }
     },
     {

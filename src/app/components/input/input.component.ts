@@ -12,7 +12,7 @@ import {AbstractControl, ControlValueAccessor, FormGroupDirective, NG_VALUE_ACCE
 import { TEXT_INPUT_TYPES } from '../components.const';
 
 @Component({
-  selector: 'c-input',
+  selector: 'ch-input-text',
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
   providers: [
