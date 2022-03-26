@@ -1,45 +1,42 @@
+<!-- TODO Translate -->
 <div class="w-100 h-100 d-flex">
   <div class="page-container w-100">
     <div class="login-panel w-100">
       <div class="login card">
-        <form [formGroup]="loginForm">
-          <c-input formControlName="email" [label]="'Usuário'" icon="mdi mdi-account"></c-input>
-          <c-input formControlName="password" [type]="'password'" [label]="'Senha'" icon="mdi mdi-account-key"></c-input>
+        <form class="mb-1" [formGroup]="loginForm">
+          <ch-input-text formControlName="email" [label]="'Usuário'" icon="mdi mdi-account"></ch-input-text>
+          <ch-input-text formControlName="password" [type]="'password'" [label]="'Senha'" icon="mdi mdi-account-key"></ch-input-text>
         </form>
-        <c-buttom>
+        <ch-buttom (click)="loginUser()">
           <label>Entrar</label>
-        </c-buttom>
-        <c-buttom   (click)="change()">
+        </ch-buttom>
+        <ch-buttom (click)="change()">
           <label>Cadastrar-se</label>
-        </c-buttom>
+        </ch-buttom>
       </div>
       <div class="register card">
         <form [formGroup]="registerForm">
-          <c-input [label]="'Usuário'" icon="mdi mdi-account"></c-input>
-          <c-input [label]="'Email'" icon="mdi mdi-email"></c-input>
-          <c-input [type]="'password'" [label]="'Senha'" icon="mdi mdi-lock"></c-input>
-          <c-input [type]="'password'" [label]="'Confirmar Senha'" icon="mdi mdi-lock-check"></c-input>
+          <ch-input-text formControlName="username" [label]="'Usuário'" icon="mdi mdi-account"></ch-input-text>
+          <ch-input-text formControlName="email" [label]="'Email'" icon="mdi mdi-email"></ch-input-text>
+          <ch-input-text formControlName="password" [type]="'password'" [label]="'Senha'" icon="mdi mdi-lock"></ch-input-text>
+          <ch-input-text formControlName="confirmPassword" [type]="'password'" [label]="'Confirmar Senha'" icon="mdi mdi-lock-check"></ch-input-text>
         </form>
-        <c-buttom >
+        <ch-buttom (click)="registerUser()">
           <label>Finalizar cadastro</label>
-        </c-buttom>
-        <c-buttom   (click)="change()">
+        </ch-buttom>
+        <ch-buttom   (click)="change()">
           <label>Ja sou cadastrado</label>
-        </c-buttom>
+        </ch-buttom>
       </div>
     </div>
-    <!-- TODO Translate -->
   </div>
   <div [ngStyle]="{'transform': 'translate(' + (hasAccount ? '0' : '-100%') +')'}"  class="login-img-panel" style="background-color: #c8a3eb">
-
-    <img [@slide]="loginBackgroundState" style="position: absolute;transition: 1s;" src="./../../../assets/svgs/login/Login-rafiki_3.svg">
+    <img [@slide]="loginBackgroundState" (@slide.done)="inAnimation = false" style="position: absolute;transition: 1s;" src="./../../../assets/svgs/login/Login-rafiki_3.svg">
     <img [@zoom]="loginCellState" style="position: absolute;" src="./../../../assets/svgs/login/Login-rafiki_2.svg">
     <img [@slide]="loginPersonState" style="position: absolute;" src="./../../../assets/svgs/login/Login-rafiki_1.svg">
 
-    <img [@slide]="registerBackgroundState"  style="position: absolute;transition: 1s;" src="./../../../assets/svgs/sign/Accept terms-rafiki_3.svg">
+    <img [@slide]="registerBackgroundState" (@slide.done)="inAnimation = false" style="position: absolute;transition: 1s;" src="./../../../assets/svgs/sign/Accept terms-rafiki_3.svg">
     <img [@zoom]="registerPaperState"  style="position: absolute;" src="./../../../assets/svgs/sign/Accept terms-rafiki_2.svg">
     <img [@slide]="registerPersonState"  style="position: absolute;" src="./../../../assets/svgs/sign/Accept terms-rafiki_1.svg">
-
-
   </div>
 </div>

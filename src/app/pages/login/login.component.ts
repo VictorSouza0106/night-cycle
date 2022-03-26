@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SLIDE, SLIDE_ANIMATIONS } from 'src/animations/slide.animation';
 import { ZOOM, ZOOM_ANIMATIONS } from 'src/animations/zoom.animation';
 
@@ -12,14 +12,10 @@ const {
 } = ZOOM_ANIMATIONS;
 
 const {
-  slideDownIn,
-  slideDownOut,
   slideLeftIn,
   slideLeftOut,
   slideRightIn,
   slideRightOut,
-  slideUpIn,
-  slideUpOut,
   slideHidden,
 } = SLIDE_ANIMATIONS
 
@@ -31,6 +27,8 @@ const {
 })
 
 export class LoginComponent implements OnInit {
+
+  public inAnimation: boolean = false;
 
   public loginBackgroundState: string = slideRightIn;
   public loginCellState: string = zoomIncreaseIn;
@@ -55,21 +53,35 @@ export class LoginComponent implements OnInit {
 
   private initForms(): void{
     this.loginForm = this.formBuilder.group({
-      email: null,
-      password: [null],
+      email: [null, Validators.compose([Validators.email, Validators.required])],
+      password: [null, Validators.required],
     });
-    console.log('LoginFr', this.loginForm)
-    this.registerForm = this.formBuilder.group({
 
-    })
-  };
+    this.registerForm = this.formBuilder.group({
+      username: [null, Validators.required],
+      email:[null, Validators.compose([Validators.required, Validators.email])],
+      password:[null, Validators.required],
+      confirmPassword:[null]
+    });
+  }
+
+  private clearForms(): void{
+    this.clearLoginForm();
+    this.clearRegisterForm();
+  }
 
   private clearLoginForm(): void{
-
-  };
+    Object.keys(this.loginForm.controls).forEach((keys) => {
+      this.loginForm.get(keys).markAsUntouched();
+    });
+    this.loginForm.reset();
+  }
 
   private clearRegisterForm(): void {
-
+    Object.keys(this.registerForm.controls).forEach((keys) => {
+      this.registerForm.get(keys).markAsUntouched();
+    });
+    this.registerForm.reset();
   }
 
   private goToLogin(): void {
@@ -100,11 +112,32 @@ export class LoginComponent implements OnInit {
     }, 750);
   }
 
+  public loginUser(): void {
+    this.loginForm.markAllAsTouched();
+
+    //TODO Adicionar requisição back-end
+  }
+
+  public registerUser(): void {
+    this.registerForm.markAllAsTouched();
+
+    //TODO Adicionar requisição back-end
+  }
+
 
   public change(): void{
-    this.hasAccount ? this.goToRegister() : this.goToLogin();
-    this.hasAccount = !this.hasAccount;
+    if (this.inAnimation) return;
 
-    console.log('FORM', this.loginForm.get('email').value)
+    this.clearForms();
+    this.inAnimation = true;
+
+    if (this.hasAccount){
+      this.goToRegister();
+      this.clearLoginForm();
+    } else {
+      this.goToLogin();
+      this.clearRegisterForm();
+    }
+    this.hasAccount = !this.hasAccount;
   }
 }
