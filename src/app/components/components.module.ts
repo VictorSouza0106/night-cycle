@@ -3,18 +3,19 @@ import { ButtomComponent } from "./buttom/buttom.component";
 import { CommonModule } from '@angular/common';
 import { InputTextComponent } from './input/input.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { ExpanelPanelComponent } from './expanel-panel/expanel-panel.component';
+import { ExpansionPanelComponent } from "./expansion-panel/expansion-panel.component";
 
 
 @NgModule({
     declarations: [
         ButtomComponent,
         InputTextComponent,
-        ExpanelPanelComponent
+        ExpansionPanelComponent
     ],
     exports: [
         ButtomComponent,
-        InputTextComponent
+        InputTextComponent,
+        ExpansionPanelComponent
     ],
     imports: [
         CommonModule,
