@@ -1,0 +1,86 @@
+.page {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding-top: 50px;
+
+  background: rgb(70,62,125);
+background: linear-gradient(90deg, rgba(70,62,125,1) 0%, rgba(42,39,143,1) 25%, rgba(25,110,230,1) 50%, rgba(89,54,159,1) 75%, rgba(112,34,157,1) 100%);
+
+  .card {
+    padding: 24px;
+    margin-bottom: 14px !important;
+
+    div {
+      text-align: center;
+      line-height: 1.5;
+
+      span {
+        font-size: 2rem;
+      }
+
+      i {
+        margin-left: 8px;
+        font-size: 1.2rem;
+      }
+    }
+
+    .name {
+      font-weight: bold;
+    }
+
+    .price {
+      display: flex;
+      flex-direction: column;
+      margin-top: 24px;
+      text-align: center;
+      font-weight: 500;
+
+      label {
+        line-height: initial;
+      }
+
+      p {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .price-value {
+        font-size: 3.5rem;
+      }
+    }
+
+    .divider {
+      height: 1px;
+      border: 1px solid #000;
+      margin: 16px 0 12px 0;
+    }
+
+    li {
+      display: flex;
+      margin: 12px 0;
+      align-items: center;
+
+      color: #000;
+
+      i {
+        font-size: 2em;
+      }
+
+      i:first-child {
+        margin-right: 10px;
+      }
+
+      label {
+        @media only screen and (max-width: 600px) {
+        }
+        font-size: 1.1em;
+      }
+    }
+  }
+}

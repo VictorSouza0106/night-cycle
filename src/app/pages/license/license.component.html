@@ -1,4 +1,27 @@
-<div style="display: flex;width: 100%;">
-    <ch-expansion-panel style="width: 100%;" [isCollapse]="false"></ch-expansion-panel>
-    <ch-expansion-panel style="width: 100%;" [isCollapse]="true"></ch-expansion-panel>
+<div class="w-100 h-100 d-flex page-container page row">
+    <h1 style="color:white;font-weight:bold; text-align: center;font-size: 2rem;">Soluçoes ideias para a sua empresa</h1>
+    <div *ngFor="let license of licenses" class="card-panel col-xl-3 col-md-8 col-12">
+        <div class="card-1 card" [ngStyle]="{color: license.color}">
+            <div class="title">
+                <span class="name">{{license.name}}</span>
+                <i [class]="license.icon"></i>
+            </div>
+            <div class="price">
+                <label class="subtitle">a partir de</label>
+                <label>
+                    <span>R$</span>
+                    <span class="price-value">{{license.price}}</span>
+                </label>
+                <label class="subtitle">mensais</label>
+            </div>
+            <div class="w-100 divider"></div>
+            <ul>
+                <li *ngFor="let features of license.featuresAvailable">
+                    <i style="color: rgb(88, 214, 88);" *ngIf="features.permission" class="mdi mdi-check"></i>
+                    <i style="color: red;" *ngIf="!features.permission" class="mdi mdi-close"></i>
+                    <label>{{features.label}}</label>
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>
