@@ -1,0 +1,27 @@
+<div class="w-100 h-100 d-flex page-container page row">
+    <h1 style="color:white;font-weight:bold; text-align: center;font-size: 2rem;">Soluçoes ideias para a sua empresa</h1>
+    <div *ngFor="let course of courses" class="card-panel col-xl-3 col-md-8 col-12">
+        <div class="card-1 card">
+            <div class="d-flex justify-content-center">
+                <div class="circle">
+                    <i [ngClass]="course.icon"></i>
+                </div>
+            </div>
+            <div class="title">
+                <span class="name">{{course.name}}</span>
+            </div>
+            <div class="w-100 divider"></div>
+            <div class="time">
+                <label>
+                    <span class="price-value">{{course.totalTime}}</span>
+                    <span>Hrs</span>
+                </label>
+            </div>
+            <ul>
+                <li *ngFor="let module of course.modules">
+                    <label>{{module.name}}</label>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
