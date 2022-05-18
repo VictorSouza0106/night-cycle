@@ -1,23 +1,27 @@
-.navbar {
+.main-container {
 
-    min-height: 60px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
-
-    .logo {
-
-        img {
-            width: 32px;
+    .navbar {
+    
+        min-height: 60px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+    
+        .logo {
+    
+            img {
+                width: 32px;
+            }
         }
-    }
-
-    ul {
-        display: flex;
-        flex-direction: row;
-
-        li {
-            margin: 0 24px;
-            white-space: nowrap;
+    
+        ul {
+            display: flex;
+            flex-direction: row;
+    
+            li {
+                margin: 0 24px;
+                white-space: nowrap;
+                cursor: pointer;
+            }
         }
     }
 }

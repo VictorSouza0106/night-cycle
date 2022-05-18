@@ -3,7 +3,7 @@
     justify-content: space-around;
     align-items: center;
 
-    height: calc(100% - var(--header-size));
+    // height: calc(100vh - 60px);
 }
 
 .login {
@@ -18,7 +18,7 @@
     background: #e6e6e6;
     display: flex;
     box-shadow: 0 10px 20px rgb(0 0 0 / 19%), 0 6px 6px rgb(0 0 0 / 23%);
-    border-radius: 10px;
+    border-radius: 14px;
     border: none;
     max-width: 600px;
 }
