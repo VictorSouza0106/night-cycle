@@ -17,7 +17,7 @@
       <div class="register card">
         <form [formGroup]="registerForm">
           <ch-input-text formControlName="username" [label]="'Usuário'" icon="mdi mdi-account"></ch-input-text>
-          <ch-input-text formControlName="email" [label]="'Email'" icon="mdi mdi-email"></ch-input-text>
+          <ch-input-text formControlName="email" [label]="'E-mail'" icon="mdi mdi-email"></ch-input-text>
           <ch-input-text formControlName="password" [type]="'password'" [label]="'Senha'" icon="mdi mdi-lock"></ch-input-text>
           <ch-input-text formControlName="confirmPassword" [type]="'password'" [label]="'Confirmar Senha'" icon="mdi mdi-lock-check"></ch-input-text>
         </form>
@@ -25,7 +25,7 @@
           <label>Finalizar cadastro</label>
         </ch-buttom>
         <ch-buttom (click)="changeForm()">
-          <label>Ja sou cadastrado</label>
+          <label>Já sou cadastrado</label>
         </ch-buttom>
       </div>
     </div>

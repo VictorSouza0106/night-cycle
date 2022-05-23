@@ -105,14 +105,12 @@ export class CoursesComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
   ) {
-    this.authService.isAuthenticate.subscribe((isAuth) => {
-      this.isLogged = isAuth;
-    })
   }
 
   ngOnInit(): void {
-    console.log('');
-    
+    this.authService.isAuthenticate.subscribe((isAuth) => {
+      this.isLogged = isAuth;
+    });   
   }
 
   public goToCourse(): void{
