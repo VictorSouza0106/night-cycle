@@ -17,23 +17,23 @@ export class CoursesComponent implements OnInit {
       modules:[
         {
           name:'O que é Kanban?',
-          class:[]
+          classes:[]
         },
         {
           name:'Vantagens de utilizar Kanbam',
-          class:[]
+          classes:[]
         },
         {
           name:'Como implementar Kamban na minha empresa?',
-          class:[]
+          classes:[]
         },
         {
           name:'Aumentando a produtividade do meu time',
-          class:[]
+          classes:[]
         },
         {
           name:'Dicas e ferramentas',
-          class:[]
+          classes:[]
         },
       ]
     },
@@ -45,51 +45,51 @@ export class CoursesComponent implements OnInit {
       modules:[
         {
           name:'O que é Scrum?',
-          class:[]
+          classes:[]
         },
         {
           name:'Vantagens de utilizar Scrum',
-          class:[]
+          classes:[]
         },
         {
           name:'Como implementar Scrum na minha empresa?',
-          class:[]
+          classes:[]
         },
         {
           name:'Aumentando a produtividade do meu time',
-          class:[]
+          classes:[]
         },
         {
           name:'Dicas e ferramentas',
-          class:[]
+          classes:[]
         },
       ]
     },
     {
-      name:'Extreme Progamming',
-      icon:'mdi chart-timeline',
+      name:'XP',
+      icon:'mdi mdi-chart-timeline',
       totalTime:30,
       description:'',
       modules:[
         {
           name:'O que é Extreme Progamming?',
-          class:[]
+          classes:[]
         },
         {
           name:'Vantagens de utilizar Extreme Progamming',
-          class:[]
+          classes:[]
         },
         {
           name:'Como implementar Extreme Progamming na minha empresa?',
-          class:[]
+          classes:[]
         },
         {
           name:'Aumentando a produtividade do meu time',
-          class:[]
+          classes:[]
         },
         {
           name:'Dicas e ferramentas',
-          class:[]
+          classes:[]
         },
       ]
     },

@@ -21,9 +21,10 @@ export interface ICourse {
 
 export interface IModule { 
     name: string,
-    class: IClass[],
+    classes: IClass[],
 }
 
 export interface IClass {
     name: string,
+    duration: number
 }
