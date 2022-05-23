@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { SLIDE, SLIDE_ANIMATIONS } from 'src/animations/slide.animation';
 import { ZOOM, ZOOM_ANIMATIONS } from 'src/animations/zoom.animation';
+import { AuthService } from 'src/app/services/auth.service';
 
 const {
   zoomDecreaseIn,
@@ -45,6 +47,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -112,16 +116,45 @@ export class LoginComponent implements OnInit {
     }, 750);
   }
 
+  private isPasswordEquals(): Promise<boolean> {
+
+    return new Promise<boolean>((resolve) => {
+
+      if (this.registerForm.get('password').value === this.registerForm.get('confirmPassword').value) {
+        resolve(true);
+      }
+      else{  
+        this.registerForm.get('password').setErrors({notEqual:true});
+        this.registerForm.get('confirmPassword').setErrors({notEqual:true});
+  
+        resolve(false);
+      }
+    });
+  }
+
   public loginUser(): void {
     this.loginForm.markAllAsTouched();
 
-    //TODO Adicionar requisição back-end
+    if (this.loginForm.valid){
+      //TODO Adicionar requisição back-end
+      this.authService.isAuthenticate.next(true);
+      this.router.navigateByUrl('course');
+    }
+
+    
   }
 
-  public registerUser(): void {
+  public async registerUser(): Promise<void> {
+
+    await this.isPasswordEquals();
+
     this.registerForm.markAllAsTouched();
 
-    //TODO Adicionar requisição back-end
+    if (this.registerForm.valid){
+      //TODO Adicionar requisição back-end
+      this.authService.isAuthenticate.next(true);
+      this.router.navigateByUrl('course');
+    }
   }
 
 

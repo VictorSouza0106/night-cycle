@@ -1,6 +1,6 @@
-<div class="input-style">
+<div class="input-style" (click)="inputFocus()">
     <input
-      id="text-input"
+      #textInput
       [ngClass]="{ 'input-error': isFieldValid()  }"
       (focus)="onFocus()"
       (blur)="onBlur()"
@@ -13,7 +13,6 @@
     <label
       class="label"
       [ngClass]="{ 'has-content': value, 'label-error': isFieldValid() }"
-      (click)="inputFocus()"
     >
       <i [ngClass]="icon" style="margin-right: 12px;"></i>
       <span>{{label}}</span>
