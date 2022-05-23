@@ -2,11 +2,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   Component,
+  ElementRef,
   EventEmitter,
   forwardRef,
   Input,
   OnInit,
   Output,
+  ViewChild,
 } from '@angular/core';
 import {AbstractControl, ControlValueAccessor, FormGroupDirective, NG_VALUE_ACCESSOR} from '@angular/forms';
 import { TEXT_INPUT_TYPES } from '../components.const';
@@ -24,6 +26,8 @@ import { TEXT_INPUT_TYPES } from '../components.const';
   ],
 })
 export class InputTextComponent implements ControlValueAccessor, OnInit {
+
+  @ViewChild('textInput', {static:true}) textInput: ElementRef;
 
   @Input() formControlName: string;
 
@@ -83,6 +87,10 @@ export class InputTextComponent implements ControlValueAccessor, OnInit {
       case 'email':
         this.errorMessage = 'Este Email é invalido';
         break;
+
+      case 'notEqual':
+        this.errorMessage = 'As senhas não são correspondentes';
+        break;
     
       default:
         this.errorMessage = 'Este campo é invalido';
@@ -135,6 +143,6 @@ export class InputTextComponent implements ControlValueAccessor, OnInit {
   }
 
   public inputFocus(): void{
-    document.getElementById('text-input').focus();
+    this.textInput.nativeElement.focus();
   }
 }

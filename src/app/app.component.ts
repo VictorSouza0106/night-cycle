@@ -1,5 +1,6 @@
-import { Component, HostListener, OnDestroy } from '@angular/core';
+import { Component, HostListener, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from './services/auth.service';
 import { WindowService } from './services/window.service';
 
 const MOBILE_WIDTH = 768;
@@ -9,14 +10,19 @@ const MOBILE_WIDTH = 768;
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnDestroy {
+export class AppComponent implements OnInit, OnDestroy {
 
   private isMobile: boolean = false;
   
+  public isLogged: boolean = false;
+  
   constructor(
     private windowService: WindowService,
+    private authService: AuthService,
     private router: Router,
-  ){}
+  ){
+
+  }
 
   @HostListener('window:resize', ['$event'])
   onResize(): void {
@@ -24,6 +30,14 @@ export class AppComponent implements OnDestroy {
       this.windowService.isMobile.next(true);
     else
       this.windowService.isMobile.next(false);
+  }
+
+  ngOnInit(): void {
+    this.authService.isAuthenticate.subscribe((isAuth) => {
+      this.isLogged = isAuth;
+      console.log("auth", isAuth);
+      
+    });
   }
 
   ngOnDestroy(): void {
