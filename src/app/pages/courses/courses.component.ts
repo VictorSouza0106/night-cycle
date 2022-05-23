@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ICourse } from '../pages.interface';
 
 @Component({
@@ -97,11 +98,17 @@ export class CoursesComponent implements OnInit {
 
   public courses: ICourse[] = this.MOCK_DATA;
 
-  // constructor() { }
+  constructor(
+    private router: Router,
+  ) {}
 
   ngOnInit(): void {
     console.log('');
     
+  }
+
+  public goToCourse(): void{
+    this.router.navigateByUrl('class');
   }
 
 }

@@ -15,7 +15,7 @@ export class ClassComponent implements OnInit {
   public blockTextStyle: boolean = false;
   public showModuleList: boolean = true;
 
-  public openedModuleIndex: number = 2;
+  public openedModuleIndex: number;
 
   public MOCK_CLASSES: IClass[] = [
     {name:'First Class',duration:25},
