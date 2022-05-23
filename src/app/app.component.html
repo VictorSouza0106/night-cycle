@@ -3,7 +3,7 @@
     <div class="d-flex flex-row align-items-center">
       <div class="d-flex flex-row align-items-center logo">
         <img src="../assets/nightcycle-logo.png" alt="">
-        <label class="logo-title">NIGHT CYCLE</label>
+        <label class="">Night Cycle</label>
       </div>
       <div>
         <ul>
@@ -11,24 +11,17 @@
           <li>O que fazemos?</li>
           <li (click)="goToPage('course')">Cursos disponíveis</li>
           <li (click)="goToPage('license')">Planos</li>
-          <li (click)="goToPage('class')">Suporte</li>
+          <li>Suporte</li>
         </ul>
       </div>
     </div>
     <div class="d-flex align-items-center ms-auto nav-options">
       <!-- TODO Traduzir lista -->
-      <div class="d-flex align-items-center" *ngIf="!isLogged">
-        <label style="cursor:pointer;" (click)="goToPage('login')">Entrar</label>
-        <ch-buttom class="ms-4">
-          <!-- TODO Traduzir lista -->      
-          <label (click)="goToPage('login')"> Cadastrar </label>
-        </ch-buttom>
-      </div>
-      <div class="d-flex  align-items-center" *ngIf="isLogged">
-        <ch-buttom><label style="white-space:nowrap;">Meus Cursos</label></ch-buttom>
-        <ch-buttom class="ms-4"><label>Meu Perfil</label></ch-buttom>
-      </div>
-
+      <label (click)="goToPage('login')">Entrar</label>
+      <ch-buttom class="ms-4">
+        <!-- TODO Traduzir lista -->      
+        <label (click)="goToPage('login')"> Cadastrar </label>
+      </ch-buttom>
       <div class="ms-4 d-flex">
         <i class="mdi mdi-web"></i>
         <i class="mdi mdi-chevron-down"></i>
