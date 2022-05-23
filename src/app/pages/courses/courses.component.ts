@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { ICourse } from '../pages.interface';
 
 @Component({
@@ -8,6 +9,8 @@ import { ICourse } from '../pages.interface';
   styleUrls: ['./courses.component.scss']
 })
 export class CoursesComponent implements OnInit {
+
+  public isLogged:boolean = false;
 
   public MOCK_DATA: ICourse[] = [
     {
@@ -100,7 +103,12 @@ export class CoursesComponent implements OnInit {
 
   constructor(
     private router: Router,
-  ) {}
+    private authService: AuthService,
+  ) {
+    this.authService.isAuthenticate.subscribe((isAuth) => {
+      this.isLogged = isAuth;
+    })
+  }
 
   ngOnInit(): void {
     console.log('');
