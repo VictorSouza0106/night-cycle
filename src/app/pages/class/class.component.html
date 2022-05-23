@@ -1,0 +1,70 @@
+<div class="page-container" style="overflow: hidden">
+  <div class="plyr__video-embed w-100" id="player">
+    <iframe
+      class="video-player"
+      src="https://player.vimeo.com/video/76979871?loop=false&amp;byline=false&amp;portrait=false&amp;title=false&amp;speed=true&amp;transparent=0&amp;gesture=media"
+      allowfullscreen
+      allowtransparency
+      allow="autoplay"
+    ></iframe>
+    <span (click)="changeState()">{{ sideBarState }}</span>
+    <span>{{ blockTextStyle }}</span>
+  </div>
+  <div
+    *ngIf="showModuleList"
+    [@sidebar]="sideBarState"
+    (@sidebar.start)="animationState(true)"
+    (@sidebar.done)="animationState(false)"
+  >
+    <div
+      class="d-flex justify-content-center p-2 card module-list-header"
+      style="position: relative"
+      (click)="changeState()"
+    >
+      <label style="text-align: center; white-space: nowrap"
+        >Conteudo do curso</label
+      >
+      <div class="module-list-btn">
+        <i
+          class="mdi mdi-chevron-double-left"
+          style="transition: all 1s"
+          [ngStyle]="{
+            transform:
+              sideBarState === 'opened' ? 'rotate(0)' : 'rotate(180deg)'
+          }"
+        ></i>
+      </div>
+    </div>
+    <div class="module-list">
+        <div *ngFor="let module of modules; let i = index">
+          <div
+            class="module-list-item"
+            (click)="setSelectedModule(i)"
+          >
+            <label
+              class="title"
+              [ngStyle]="{ 'white-space': blockTextStyle ? 'nowrap' : 'inherit' }"
+              style="font-weight: bold; overflow: hidden"
+            >
+              {{ i + 1 + "." + module.name }}
+            </label>
+          </div>
+          <div
+            class="class-list"
+            [ngStyle]="{ height: i === openedModuleIndex ? 'calc('+ 50 * module.classes.length + 'px)' : '0' }"
+          >
+            
+            <div *ngFor="let class of module.classes let j = index">
+                <div class="class-panel d-flex align-items-center w-100">
+                    <input type="checkbox">
+                    <div class="d-flex flex-column ms-3">
+                        <label class="class-title">{{ j + 1 + "." + class.name }}</label>
+                        <label class="class-duration"><i class="mdi mdi-play-circle"></i>{{class.duration}}</label>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

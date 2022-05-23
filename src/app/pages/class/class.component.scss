@@ -1,0 +1,66 @@
+.page-container {
+  padding: 0;
+
+  .video-player {
+    width: 100%;
+    aspect-ratio: 16 / 7.5;
+  }
+
+  .module-list-btn {
+    width: 38px;
+    height: 37px;
+    background-color: white;
+    position: absolute;
+    left: -15px;
+    border-radius: 12px 0 0 12px;
+
+    transition: all 0.3s;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .module-list-header:hover .module-list-btn {
+    left: -35px;
+}
+
+  .module-list {
+    overflow: auto;
+    height: calc(100vh - var(--header-size) - 38px);
+
+    .module-list-item {
+        border-bottom: 1px solid #000000;
+        padding: 16px;
+        overflow: hidden;
+        display: flex;
+        background-color: var(--light-theme-primary-color);
+    }
+
+    .module-list-header {
+        cursor: pointer;
+    }
+
+    .class-list {
+        display: flex;
+        flex-direction: column;
+
+        transition: all 0.7s; 
+        overflow: hidden;
+    }
+
+    .class-panel {
+        height: 50px;
+        border-bottom: 1px solid #5e5e5e;
+        padding: 8px;
+
+        .class-title {
+          font-size: 0.8rem;
+        }
+
+        .class-duration {
+          font-size: 0.6rem;
+        }
+    }
+  }
+}
