@@ -10,6 +10,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { LicenseComponent } from './pages/license/license.component';
 import { CoursesComponent } from './pages/courses/courses.component';
 import { ClassComponent } from './pages/class/class.component';
+import { HomeComponent } from './pages/home/home.component';
 
 // MATERIAL IMPORTS
 
@@ -19,7 +20,8 @@ import { ClassComponent } from './pages/class/class.component';
     LoginComponent,
     LicenseComponent,
     CoursesComponent,
-    ClassComponent
+    ClassComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
