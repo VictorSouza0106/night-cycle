@@ -9,6 +9,7 @@ import { ComponentsModule } from './components/components.module';
 import { LoginComponent } from './pages/login/login.component';
 import { LicenseComponent } from './pages/license/license.component';
 import { CoursesComponent } from './pages/courses/courses.component';
+import { ClassComponent } from './pages/class/class.component';
 
 // MATERIAL IMPORTS
 
@@ -17,7 +18,8 @@ import { CoursesComponent } from './pages/courses/courses.component';
     AppComponent,
     LoginComponent,
     LicenseComponent,
-    CoursesComponent
+    CoursesComponent,
+    ClassComponent
   ],
   imports: [
     BrowserModule,
