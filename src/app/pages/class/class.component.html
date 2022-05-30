@@ -7,6 +7,12 @@
       allowtransparency
       allow="autoplay"
     ></iframe>
+    <div class="ms-5 mt-3">
+      <p style="font-size: 1.5rem;font-weight: bold;">{{selectedClass?.name}}</p>
+      <p style="font-size: 0.7rem;">Módulo: {{selectedModule?.name}}</p>
+      <p class="mt-4" style="font-size: 1.2rem;font-weight: bold;">Sobre</p>
+      <p style="font-size: 0.7rem;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+    </div>
   </div>
   <div
     *ngIf="showModuleList"
@@ -46,6 +52,7 @@
             >
               {{ i + 1 + "." + module.name }}
             </label>
+            <p>0/5</p>
           </div>
           <div
             class="class-list"
@@ -53,7 +60,7 @@
           >
             
             <div *ngFor="let class of module.classes let j = index">
-                <div class="class-panel d-flex align-items-center w-100">
+                <div (click)="setSelectedClass(module, class)" class="class-panel d-flex align-items-center w-100">
                     <input type="checkbox">
                     <div class="d-flex flex-column ms-3">
                         <label class="class-title">{{ j + 1 + "." + class.name }}</label>

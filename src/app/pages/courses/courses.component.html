@@ -1,6 +1,6 @@
 <div class="w-100 h-100 d-flex page-container page row">
     <h1 style="color:white;font-weight:bold; text-align: center;font-size: 2rem;">Soluções ideias para a sua empresa</h1>
-    <div *ngFor="let course of courses" class="card-panel col-xl-3 col-md-8 col-12">
+    <div *ngFor="let course of courses let i = index" class="card-panel col-xl-3 col-md-8 col-12">
         <div class="card-1 card">
             <div class="d-flex justify-content-center">
                 <div class="circle">
@@ -14,7 +14,7 @@
             <div class="time">
                 <label>
                     <span class="price-value">{{course.totalTime}}</span>
-                    <span>Hrs</span>
+                    <span>H</span>
                 </label>
             </div>
             <ul>
@@ -22,7 +22,8 @@
                     <label>{{module.name}}</label>
                 </li>
             </ul>
-            <ch-buttom *ngIf="isLogged" (click)="goToCourse()">Acessar Curso</ch-buttom>
+            <ch-buttom *ngIf="isLogged && i === 0" (click)="goToCourse()">Acessar Curso</ch-buttom>
+            <ch-buttom *ngIf="isLogged && i !== 0" (click)="openPayment()">Compra Curso</ch-buttom>
         </div>
     </div>
 </div>

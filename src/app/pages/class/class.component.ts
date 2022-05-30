@@ -17,6 +17,9 @@ export class ClassComponent implements OnInit {
 
   public openedModuleIndex: number;
 
+  public selectedModule: any = {name: 'Introdução ao Kanban'};
+  public selectedClass: any = {name: 'Principais conceitos'};
+
   public MOCK_CLASSES: IClass[] = [
     {name:'First Class',duration:25},
     {name:'Second Class',duration: 20},
@@ -27,15 +30,15 @@ export class ClassComponent implements OnInit {
 
   public MOCK_DATA: IModule[] = [
     {
-      name:'O que é Extreme Progamming?',
+      name:'O que é Kanban?',
       classes:this.MOCK_CLASSES
     },
     {
-      name:'Vantagens de utilizar Extreme Progamming',
+      name:'Vantagens de utilizar Kanban',
       classes:this.MOCK_CLASSES
     },
     {
-      name:'Como implementar Extreme Progamming na minha empresa?',
+      name:'Como implementar Kanban na minha empresa?',
       classes:this.MOCK_CLASSES
     },
     {
@@ -71,12 +74,26 @@ export class ClassComponent implements OnInit {
     this.blockTextStyle = state;
   }
   
+  public setSelectedModuleIndex(index: number): void {
+
+    if (index === this.openedModuleIndex)
+      this.openedModuleIndex = -1;
+    else
+      this.openedModuleIndex = index;
+  }
+
   public setSelectedModule(index: number): void {
 
     if (index === this.openedModuleIndex)
       this.openedModuleIndex = -1;
     else
       this.openedModuleIndex = index;
+  }
+
+  public setSelectedClass(selectedModule:any, selectedClass:any): void {
+    
+    this.selectedModule = selectedModule;
+    this.selectedClass = selectedClass;
   }
 
 }

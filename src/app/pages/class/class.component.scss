@@ -31,14 +31,24 @@
 
     .module-list-item {
         border-bottom: 1px solid #000000;
-        padding: 16px;
+        padding: 10px 16px;
         overflow: hidden;
         display: flex;
         background-color: var(--light-theme-primary-color);
+
+        flex-direction: column;
+
+        p{
+          font-size: 0.7rem;
+          font-weight: bold;
+
+          margin: 0;
+        }
     }
 
     .module-list-header {
         cursor: pointer;
+
     }
 
     .class-list {
@@ -53,6 +63,8 @@
         height: 50px;
         border-bottom: 1px solid #5e5e5e;
         padding: 8px;
+
+        cursor: pointer;
 
         .class-title {
           font-size: 0.8rem;

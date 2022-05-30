@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { PaymentDialogComponent } from 'src/app/components/payment-dialog/payment-dialog.component';
 import { AuthService } from 'src/app/services/auth.service';
 import { ICourse } from '../pages.interface';
 
@@ -104,17 +106,23 @@ export class CoursesComponent implements OnInit {
   constructor(
     private router: Router,
     private authService: AuthService,
+    public dialog: MatDialog
   ) {
   }
 
   ngOnInit(): void {
     this.authService.isAuthenticate.subscribe((isAuth) => {
       this.isLogged = isAuth;
-    });   
+    });
   }
 
   public goToCourse(): void{
     this.router.navigateByUrl('class');
   }
 
+  public openPayment(): void {
+    this.dialog.open(PaymentDialogComponent,{
+      width: '40vw'
+    });
+  }
 }
