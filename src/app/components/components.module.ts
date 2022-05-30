@@ -4,13 +4,17 @@ import { CommonModule } from '@angular/common';
 import { InputTextComponent } from './input/input.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { ExpansionPanelComponent } from "./expansion-panel/expansion-panel.component";
+import { PaymentDialogComponent } from './payment-dialog/payment-dialog.component';
+import { NgxPayPalModule } from "ngx-paypal";
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 @NgModule({
     declarations: [
         ButtomComponent,
         InputTextComponent,
-        ExpansionPanelComponent
+        ExpansionPanelComponent,
+        PaymentDialogComponent
     ],
     exports: [
         ButtomComponent,
@@ -21,6 +25,8 @@ import { ExpansionPanelComponent } from "./expansion-panel/expansion-panel.compo
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
+        NgxPayPalModule,
+        MatDialogModule
     ],
     providers: [],
   })
