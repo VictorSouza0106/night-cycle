@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './services/auth.service';
+import { TawkService } from './services/tawk.service';
 import { WindowService } from './services/window.service';
 
 const MOBILE_WIDTH = 768;
@@ -20,6 +21,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private windowService: WindowService,
     private authService: AuthService,
     private router: Router,
+    private tawkService: TawkService,
   ){
 
   }
@@ -36,6 +38,8 @@ export class AppComponent implements OnInit, OnDestroy {
     this.authService.isAuthenticate.subscribe((isAuth) => {
       this.isLogged = isAuth;
       console.log("auth", isAuth);
+
+      this.tawkService.SetChatVisibility(isAuth);
       
     });
   }
