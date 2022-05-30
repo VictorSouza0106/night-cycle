@@ -24,15 +24,15 @@ section {
     }
 
     .card-list {
+        display: flex;
 
-        margin: 0 100px;
+        flex-wrap: wrap;
 
         .card {
             padding: 30px;
             box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
             justify-content: center;
             align-items: center;
-            margin: 0 25px;
 
             p {
                 text-align: center;
