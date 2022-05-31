@@ -1,5 +1,5 @@
 <div class="w-100 h-100 d-flex page-container page row">
-    <h1 style="color:white;font-weight:bold; text-align: center;font-size: 2rem;">Soluções ideias para a sua empresa</h1>
+    <h1 *ngIf="setMockData()" style="color:white;font-weight:bold; text-align: center;font-size: 2rem;">Soluções ideias para a sua empresa</h1>
     <div *ngFor="let license of licenses" class="card-panel col-xl-3 col-md-8 col-12">
         <div class="card-1 card" [ngStyle]="{color: license.color}">
             <div class="title">
@@ -7,12 +7,11 @@
                 <i [class]="license.icon"></i>
             </div>
             <div class="price">
-                <label class="subtitle">a partir de</label>
                 <label>
                     <span>R$</span>
                     <span class="price-value">{{license.price}}</span>
                 </label>
-                <label class="subtitle">mensais</label>
+                <label class="subtitle">{{'plans.monthly' | translate}}</label>
             </div>
             <div class="w-100 divider"></div>
             <ul>

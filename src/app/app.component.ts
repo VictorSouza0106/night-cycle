@@ -2,9 +2,10 @@ import { Component, HostListener, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './services/auth.service';
 import { TawkService } from './services/tawk.service';
+import { TranslateService } from './services/translate.service';
 import { WindowService } from './services/window.service';
 
-const MOBILE_WIDTH = 768;
+const MOBILE_WIDTH = 800;
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,8 @@ const MOBILE_WIDTH = 768;
 })
 export class AppComponent implements OnInit, OnDestroy {
 
-  private isMobile: boolean = false;
+  public isMobile: boolean = window.innerWidth < MOBILE_WIDTH ? true : false;
+  public mobileMenuState: boolean = false;
   
   public isLogged: boolean = false;
   
@@ -22,6 +24,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private router: Router,
     private tawkService: TawkService,
+    private translateService: TranslateService,
   ){
 
   }
@@ -40,8 +43,13 @@ export class AppComponent implements OnInit, OnDestroy {
       console.log("auth", isAuth);
 
       this.tawkService.SetChatVisibility(isAuth);
-      
     });
+
+    this.windowService.isMobile.subscribe((isMobile) => {
+      console.log(isMobile);
+      
+      this.isMobile = isMobile;
+    })
   }
 
   ngOnDestroy(): void {
@@ -50,6 +58,14 @@ export class AppComponent implements OnInit, OnDestroy {
 
   public goToPage(url: string): void{
     this.router.navigateByUrl(url);
+  }
+
+  public changeLang(lang: string): void {
+    this.translateService.use(lang);
+  }
+
+  public setMobileMenuState(): void {
+    this.mobileMenuState = !this.mobileMenuState;
   }
 
 }

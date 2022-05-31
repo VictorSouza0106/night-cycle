@@ -1,36 +1,35 @@
-<!-- TODO Translate -->
 <div class="w-100 h-100 d-flex">
   <div class="page-container w-100">
     <div class="login-panel w-100">
-      <div class="login card">
+      <div *ngIf="!isMobile || isMobile && hasAccount" class="login card">
         <form class="mb-1" [formGroup]="loginForm">
-          <ch-input-text formControlName="email" [label]="'Usuário'" icon="mdi mdi-account"></ch-input-text>
-          <ch-input-text formControlName="password" [type]="'password'" [label]="'Senha'" icon="mdi mdi-account-key"></ch-input-text>
+          <ch-input-text formControlName="email" [label]="'login.nickname' | translate" icon="mdi mdi-account"></ch-input-text>
+          <ch-input-text formControlName="password" [type]="'password'" [label]="'login.password'| translate" icon="mdi mdi-account-key"></ch-input-text>
         </form>
         <ch-buttom (click)="loginUser()">
-          <label>Entrar</label>
+          <label>{{'login.login' | translate}}</label>
         </ch-buttom>
         <ch-buttom (click)="changeForm()">
-          <label>Cadastrar-se</label>
+          <label>{{'login.register' | translate}}</label>
         </ch-buttom>
       </div>
-      <div class="register card">
+      <div *ngIf="!isMobile || isMobile && !hasAccount" class="register card">
         <form [formGroup]="registerForm">
-          <ch-input-text formControlName="username" [label]="'Usuário'" icon="mdi mdi-account"></ch-input-text>
+          <ch-input-text formControlName="username" [label]="'login.nickname' | translate" icon="mdi mdi-account"></ch-input-text>
           <ch-input-text formControlName="email" [label]="'E-mail'" icon="mdi mdi-email"></ch-input-text>
-          <ch-input-text formControlName="password" [type]="'password'" [label]="'Senha'" icon="mdi mdi-lock"></ch-input-text>
-          <ch-input-text formControlName="confirmPassword" [type]="'password'" [label]="'Confirmar Senha'" icon="mdi mdi-lock-check"></ch-input-text>
+          <ch-input-text formControlName="password" [type]="'password'" [label]="'login.password'| translate" icon="mdi mdi-lock"></ch-input-text>
+          <ch-input-text formControlName="confirmPassword" [type]="'password'" [label]="'login.confirm_password'| translate" icon="mdi mdi-lock-check"></ch-input-text>
         </form>
         <ch-buttom (click)="registerUser()">
-          <label>Finalizar cadastro</label>
+          <label>{{'login.finish_register' | translate}}</label>
         </ch-buttom>
         <ch-buttom (click)="changeForm()">
-          <label>Já sou cadastrado</label>
+          <label>{{'login.already_register' | translate}}</label>
         </ch-buttom>
       </div>
     </div>
   </div>
-  <div [ngStyle]="{'transform': 'translate(' + (hasAccount ? '0' : '-100%') +')'}"  class="login-img-panel" style="background-color: #c8a3eb">
+  <div *ngIf="!isMobile" [ngStyle]="{'transform': 'translate(' + (hasAccount ? '0' : '-100%') +')'}"  class="login-img-panel" style="background-color: #c8a3eb">
     <img [@slide]="loginBackgroundState" (@slide.done)="inAnimation = false" style="position: absolute;transition: 1s;" src="./../../../assets/svgs/login/Login-rafiki_3.svg">
     <img [@zoom]="loginCellState" style="position: absolute;" src="./../../../assets/svgs/login/Login-rafiki_2.svg">
     <img [@slide]="loginPersonState" style="position: absolute;" src="./../../../assets/svgs/login/Login-rafiki_1.svg">

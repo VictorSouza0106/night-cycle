@@ -6,6 +6,8 @@ import { Subject } from 'rxjs';
 })
 export class WindowService {
 
+  public MOBILE_WIDTH: number = 800;
+
   public isMobile: Subject<boolean>;
 
   constructor() {

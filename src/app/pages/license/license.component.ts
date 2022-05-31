@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslatePipe } from 'src/app/pipes/translate.pipe';
 import { ILicense } from '../pages.interface';
 
 @Component({
@@ -9,96 +10,12 @@ import { ILicense } from '../pages.interface';
 export class LicenseComponent implements OnInit {
 
   // TODO Delete Mock Data
-  public MOCK_DATA: ILicense[] = [
-    {
-      name: 'Midnight',
-      price: '69,00',
-      icon: 'mdi mdi-moon-waxing-crescent',
-      color:'#497bfa',
-      featuresAvailable:[
-        {
-          label:'Cursos sobre metodologias ágeis',
-          permission: true
-        },
-        {
-          label:'Meio e modelos de implantação',
-          permission: true
-        },
-        {
-          label:'Suporte ao cliente',
-          permission: true
-        },
-        {
-          label:'Relatório de progresso',
-          permission: false
-        },
-        {
-          label:'Consultoria 24h',
-          permission: false
-        },
-      ]
-    },
-    {
-      name: 'Dawn Cycle',
-      price: '137,00',
-      icon: 'mdi mdi-moon-waxing-gibbous',
-      color:'#0048ff',
-      featuresAvailable:[
-        {
-          label:'Cursos sobre metodologias ágeis',
-          permission: true,
-        },
-        {
-          label:'Meio e modelos de implantação',
-          permission: true,
-        },
-        {
-          label:'Suporte ao cliente',
-          permission: true,
-        },
-        {
-          label:'Relatório de progresso',
-          permission: true,
-        },
-        {
-          label:'Consultoria 24h',
-          permission: false,
-        },
-      ]
-    },
-    {
-      name: 'Night Cycle',
-      price: '218,00',
-      icon:'mdi mdi-brightness-4',
-      color:'#002685',
-      featuresAvailable:[
-        {
-          label:'Cursos sobre metodologias ágeis',
-          permission: true
-        },
-        {
-          label:'Meio e modelos de implantação',
-          permission: true
-        },
-        {
-          label:'Suporte ao cliente',
-          permission: true
-        },
-        {
-          label:'Relatório de progresso',
-          permission: true,
-        },
-        {
-          label:'Consultoria 24h',
-          permission: true,
-        },
-      ]
-    },
-  ];
 
-  public licenses: ILicense[] = this.MOCK_DATA;
+  public licenses: ILicense[];
 
-  // constructor() { }
+  constructor(
+    private translate: TranslatePipe
+  ) {}
 
   ngOnInit(): void {
     this.downloadLicenses();
@@ -107,5 +24,98 @@ export class LicenseComponent implements OnInit {
   private downloadLicenses(): void{
     console.log('Not implemented -> DownloadLicenses');
   }
+
+  public setMockData(): boolean {
+    const MOCK_DATA: ILicense[] = [
+      {
+        name: 'Midnight',
+        price: '69,00',
+        icon: 'mdi mdi-moon-waxing-crescent',
+        color:'#497bfa',
+        featuresAvailable:[
+          {
+            label:this.translate.transform('plans.about_courses'),
+            permission: true
+          },
+          {
+            label:this.translate.transform('plans.model_implementantion'),
+            permission: true
+          },
+          {
+            label:this.translate.transform('plans.suport'),
+            permission: true
+          },
+          {
+            label:this.translate.transform('plans.reports'),
+            permission: false
+          },
+          {
+            label:this.translate.transform('plans.consultancy'),
+            permission: false
+          },
+        ]
+      },
+      {
+        name: 'Dawn Cycle',
+        price: '137,00',
+        icon: 'mdi mdi-moon-waxing-gibbous',
+        color:'#0048ff',
+        featuresAvailable:[
+          {
+            label:this.translate.transform('plans.about_courses'),
+            permission: true,
+          },
+          {
+            label:this.translate.transform('plans.model_implementantion'),
+            permission: true,
+          },
+          {
+            label:this.translate.transform('plans.suport'),
+            permission: true,
+          },
+          {
+            label:this.translate.transform('plans.reports'),
+            permission: true,
+          },
+          {
+            label:this.translate.transform('plans.consultancy'),
+            permission: false,
+          },
+        ]
+      },
+      {
+        name: 'Night Cycle',
+        price: '218,00',
+        icon:'mdi mdi-brightness-4',
+        color:'#002685',
+        featuresAvailable:[
+          {
+            label:this.translate.transform('plans.about_courses'),
+            permission: true
+          },
+          {
+            label:this.translate.transform('plans.model_implementantion'),
+            permission: true
+          },
+          {
+            label:this.translate.transform('plans.suport'),
+            permission: true
+          },
+          {
+            label:this.translate.transform('plans.reports'),
+            permission: true,
+          },
+          {
+            label:this.translate.transform('plans.consultancy'),
+            permission: true,
+          },
+        ]
+      },
+    ];
+    this.licenses = MOCK_DATA;
+
+    return true;
+  }
+
 
 }

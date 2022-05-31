@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -13,6 +13,14 @@ import { ClassComponent } from './pages/class/class.component';
 import { HomeComponent } from './pages/home/home.component';
 import { TawkService } from './services/tawk.service';
 import { NgxPayPalModule } from 'ngx-paypal';
+import {MatMenuModule} from '@angular/material/menu';
+import { TranslateModule } from './pipes/translate.module';
+import { TranslateService } from './services/translate.service';
+
+export function setupTranslateFactory(
+  service: TranslateService): any {
+  return () => service.use('pt-Br');
+}
 
 // MATERIAL IMPORTS
 
@@ -32,9 +40,18 @@ import { NgxPayPalModule } from 'ngx-paypal';
     BrowserAnimationsModule,
     ComponentsModule,
     ReactiveFormsModule,
+    MatMenuModule,
+    TranslateModule
   ],
   providers: [
+    TranslateService, {
+      provide: APP_INITIALIZER,
+      useFactory: setupTranslateFactory,
+      deps: [TranslateService],
+      multi: true
+    },
     TawkService,
+    TranslateService,
   ],
   bootstrap: [AppComponent]
 })

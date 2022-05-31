@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { SLIDE, SLIDE_ANIMATIONS } from 'src/animations/slide.animation';
 import { ZOOM, ZOOM_ANIMATIONS } from 'src/animations/zoom.animation';
 import { AuthService } from 'src/app/services/auth.service';
+import { WindowService } from 'src/app/services/window.service';
 
 const {
   zoomDecreaseIn,
@@ -30,6 +31,8 @@ const {
 
 export class LoginComponent implements OnInit {
 
+  public isMobile: boolean = window.innerWidth < this.windowService.MOBILE_WIDTH ? true : false;
+
   public inAnimation: boolean = false;
 
   public loginBackgroundState: string = slideRightIn;
@@ -49,10 +52,15 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
+    private windowService: WindowService
   ) { }
 
   ngOnInit(): void {
     this.initForms();
+
+    this.windowService.isMobile.subscribe((isMob) => {
+      this.isMobile = isMob;
+    })
   }
 
   private initForms(): void{
@@ -159,7 +167,9 @@ export class LoginComponent implements OnInit {
 
 
   public changeForm(): void{
-    if (this.inAnimation) return;
+    console.log('AN', this.inAnimation);
+    
+    if (this.inAnimation && !this.isMobile) return;
 
     this.clearForms();
     this.inAnimation = true;
@@ -172,5 +182,7 @@ export class LoginComponent implements OnInit {
       this.clearRegisterForm();
     }
     this.hasAccount = !this.hasAccount;
+    console.log(this.hasAccount);
+    
   }
 }

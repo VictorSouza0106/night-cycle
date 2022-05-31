@@ -7,6 +7,7 @@ import { ExpansionPanelComponent } from "./expansion-panel/expansion-panel.compo
 import { PaymentDialogComponent } from './payment-dialog/payment-dialog.component';
 import { NgxPayPalModule } from "ngx-paypal";
 import {MatDialogModule} from '@angular/material/dialog';
+import { TranslatePipe } from "../pipes/translate.pipe";
 
 
 @NgModule({
@@ -28,6 +29,8 @@ import {MatDialogModule} from '@angular/material/dialog';
         NgxPayPalModule,
         MatDialogModule
     ],
-    providers: [],
+    providers: [
+        TranslatePipe
+    ],
   })
   export class ComponentsModule { }

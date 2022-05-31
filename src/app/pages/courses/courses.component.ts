@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { PaymentDialogComponent } from 'src/app/components/payment-dialog/payment-dialog.component';
+import { TranslatePipe } from 'src/app/pipes/translate.pipe';
 import { AuthService } from 'src/app/services/auth.service';
 import { ICourse } from '../pages.interface';
 
@@ -13,100 +14,13 @@ import { ICourse } from '../pages.interface';
 export class CoursesComponent implements OnInit {
 
   public isLogged:boolean = false;
-
-  public MOCK_DATA: ICourse[] = [
-    {
-      name:'Kanban',
-      icon:'mdi mdi-trello',
-      totalTime:30,
-      description:'',
-      modules:[
-        {
-          name:'O que é Kanban?',
-          classes:[]
-        },
-        {
-          name:'Vantagens de utilizar Kanbam',
-          classes:[]
-        },
-        {
-          name:'Como implementar Kamban na minha empresa?',
-          classes:[]
-        },
-        {
-          name:'Aumentando a produtividade do meu time',
-          classes:[]
-        },
-        {
-          name:'Dicas e ferramentas',
-          classes:[]
-        },
-      ]
-    },
-    {
-      name:'Scrum',
-      icon:'mdi mdi-arrow-decision',
-      totalTime:40,
-      description:'',
-      modules:[
-        {
-          name:'O que é Scrum?',
-          classes:[]
-        },
-        {
-          name:'Vantagens de utilizar Scrum',
-          classes:[]
-        },
-        {
-          name:'Como implementar Scrum na minha empresa?',
-          classes:[]
-        },
-        {
-          name:'Aumentando a produtividade do meu time',
-          classes:[]
-        },
-        {
-          name:'Dicas e ferramentas',
-          classes:[]
-        },
-      ]
-    },
-    {
-      name:'XP',
-      icon:'mdi mdi-chart-timeline',
-      totalTime:30,
-      description:'',
-      modules:[
-        {
-          name:'O que é Extreme Progamming?',
-          classes:[]
-        },
-        {
-          name:'Vantagens de utilizar Extreme Progamming',
-          classes:[]
-        },
-        {
-          name:'Como implementar Extreme Progamming na minha empresa?',
-          classes:[]
-        },
-        {
-          name:'Aumentando a produtividade do meu time',
-          classes:[]
-        },
-        {
-          name:'Dicas e ferramentas',
-          classes:[]
-        },
-      ]
-    },
-  ];
-
-  public courses: ICourse[] = this.MOCK_DATA;
+  public courses: ICourse[];
 
   constructor(
     private router: Router,
     private authService: AuthService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private translate: TranslatePipe,
   ) {
   }
 
@@ -124,5 +38,99 @@ export class CoursesComponent implements OnInit {
     this.dialog.open(PaymentDialogComponent,{
       width: '40vw'
     });
+  }
+
+  public setMockData(): boolean{
+
+    const MOCK_DATA: ICourse[] = [
+      {
+        name:'Kanban',
+        icon:'mdi mdi-trello',
+        totalTime:30,
+        description:'',
+        modules:[
+          {
+            name: this.translate.transform('courses_screen.what_is') + ' Kanban',
+            classes:[]
+          },
+          {
+            name:this.translate.transform('courses_screen.advantages') + ' Kanban',
+            classes:[]
+          },
+          {
+            name:this.translate.transform('courses_screen.implement_in_my_company'),
+            classes:[]
+          },
+          {
+            name:this.translate.transform('courses_screen.increase_produtivity'),
+            classes:[]
+          },
+          {
+            name:this.translate.transform('courses_screen.tips'),
+            classes:[]
+          },
+        ]
+      },
+      {
+        name:'Scrum',
+        icon:'mdi mdi-arrow-decision',
+        totalTime:40,
+        description:'',
+        modules:[
+          {
+            name: this.translate.transform('courses_screen.what_is') + ' scrum',
+            classes:[]
+          },
+          {
+            name:this.translate.transform('courses_screen.advantages') + ' scrum',
+            classes:[]
+          },
+          {
+            name:this.translate.transform('courses_screen.implement_in_my_company'),
+            classes:[]
+          },
+          {
+            name:this.translate.transform('courses_screen.increase_produtivity'),
+            classes:[]
+          },
+          {
+            name:this.translate.transform('courses_screen.tips'),
+            classes:[]
+          },
+        ]
+      },
+      {
+        name:'XP',
+        icon:'mdi mdi-chart-timeline',
+        totalTime:30,
+        description:'',
+        modules:[
+          {
+            name: this.translate.transform('courses_screen.what_is') + ' XP',
+            classes:[]
+          },
+          {
+            name:this.translate.transform('courses_screen.advantages') + ' XP',
+            classes:[]
+          },
+          {
+            name:this.translate.transform('courses_screen.implement_in_my_company'),
+            classes:[]
+          },
+          {
+            name:this.translate.transform('courses_screen.increase_produtivity'),
+            classes:[]
+          },
+          {
+            name:this.translate.transform('courses_screen.tips'),
+            classes:[]
+          },
+        ]
+      },
+    ];
+
+    this.courses = MOCK_DATA;
+    
+    return true;
   }
 }

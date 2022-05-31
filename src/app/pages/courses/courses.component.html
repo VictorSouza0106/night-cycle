@@ -1,5 +1,5 @@
 <div class="w-100 h-100 d-flex page-container page row">
-    <h1 style="color:white;font-weight:bold; text-align: center;font-size: 2rem;">Soluções ideias para a sua empresa</h1>
+    <h1 *ngIf="setMockData()" style="color:white;font-weight:bold; text-align: center;font-size: 2rem;">{{'courses_screen.solutions' | translate}}</h1>
     <div *ngFor="let course of courses let i = index" class="card-panel col-xl-3 col-md-8 col-12">
         <div class="card-1 card">
             <div class="d-flex justify-content-center">
@@ -19,7 +19,7 @@
             </div>
             <ul>
                 <li *ngFor="let module of course.modules">
-                    <label>{{module.name}}</label>
+                    <label>{{module.name | translate}}</label>
                 </li>
             </ul>
             <ch-buttom *ngIf="isLogged && i === 0" (click)="goToCourse()">Acessar Curso</ch-buttom>
