@@ -20,7 +20,7 @@ export const langPt = {
       'Nossos profissionais estão sempre prontos para ajustar as estratégias da sua equipe',
   },
   courses_screen: {
-    solutions: 'Soluções ideias para a sua empresa',
+    solutions: 'Soluções ideais para a sua empresa',
     what_is: 'O que é',
     advantages: 'Vantagens de utilizar',
     implement_in_my_company: 'Como implementar',
