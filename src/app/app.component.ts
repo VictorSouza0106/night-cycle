@@ -41,7 +41,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.authService.isAuthenticate.subscribe((isAuth) => {
       this.isLogged = isAuth;
 
-      this.tawkService.SetChatVisibility(isAuth);
+      this.tawkService.SetChatVisibility(true);
     });
 
     this.windowService.isMobile.subscribe((isMobile) => {
