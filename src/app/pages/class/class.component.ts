@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SIDEBAR, SIDEBAR_ANIMATION } from 'src/animations/sidebar.animation';
+import { WindowService } from 'src/app/services/window.service';
 import { IClass, IModule } from '../pages.interface';
 const {closed, opened} = SIDEBAR_ANIMATION;
 
@@ -19,6 +20,8 @@ export class ClassComponent implements OnInit {
 
   public selectedModule: any = {name: 'Introdução ao Kanban'};
   public selectedClass: any = {name: 'Principais conceitos'};
+
+  public isMobile: boolean;
 
   public MOCK_CLASSES: IClass[] = [
     {name:'First Class',duration:25},
@@ -54,10 +57,16 @@ export class ClassComponent implements OnInit {
 
   public modules: IModule[] = this.MOCK_DATA;
 
-  // constructor() { }
+  constructor(
+    private windowService: WindowService
+  ) {
+    this.isMobile = !!(window.innerWidth < windowService.MOBILE_WIDTH);
+  }
 
   ngOnInit(): void {
-    console.log('');
+    this.windowService.isMobile.subscribe((isMobile) => {
+      this.isMobile = isMobile;
+    });
     
   }
 

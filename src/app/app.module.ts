@@ -16,6 +16,7 @@ import { NgxPayPalModule } from 'ngx-paypal';
 import {MatMenuModule} from '@angular/material/menu';
 import { TranslateModule } from './pipes/translate.module';
 import { TranslateService } from './services/translate.service';
+import {MatTabsModule} from '@angular/material/tabs';
 
 export function setupTranslateFactory(
   service: TranslateService): any {
@@ -41,7 +42,8 @@ export function setupTranslateFactory(
     ComponentsModule,
     ReactiveFormsModule,
     MatMenuModule,
-    TranslateModule
+    TranslateModule,
+    MatTabsModule
   ],
   providers: [
     TranslateService, {

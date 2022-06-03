@@ -78,11 +78,11 @@ export class CoursesComponent implements OnInit {
         description:'',
         modules:[
           {
-            name: this.translate.transform('courses_screen.what_is') + ' scrum',
+            name: this.translate.transform('courses_screen.what_is') + ' Scrum',
             classes:[]
           },
           {
-            name:this.translate.transform('courses_screen.advantages') + ' scrum',
+            name:this.translate.transform('courses_screen.advantages') + ' Scrum',
             classes:[]
           },
           {

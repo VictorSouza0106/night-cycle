@@ -53,6 +53,12 @@ table {
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
 @import url('https://cdn.materialdesignicons.com/5.1.45/css/materialdesignicons.min.css');
 
+@mixin small-and-down {
+    @media screen and (max-width: 800px) {
+      @content;
+    }
+}
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 

@@ -16,9 +16,7 @@
     <div class="d-flex align-items-center ms-auto nav-options">
       <div class="d-flex align-items-center" *ngIf="!isLogged">
         <label style="cursor:pointer;" (click)="goToPage('login')">{{'sidenav.login' | translate}}</label>
-        <ch-buttom class="ms-4">    
-          <label (click)="goToPage('login')">{{'sidenav.register' | translate}}</label>
-        </ch-buttom>
+        <ch-buttom class="ms-4" [label]="'sidenav.register' | translate" (click)="goToPage('login')"></ch-buttom>
       </div>
       <div class="d-flex  align-items-center" *ngIf="isLogged">
         <ch-buttom (click)="goToPage('course')"><label style="white-space:nowrap;">Meus Cursos</label></ch-buttom>

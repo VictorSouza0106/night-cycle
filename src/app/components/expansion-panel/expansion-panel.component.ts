@@ -31,8 +31,6 @@ export class ExpansionPanelComponent implements OnInit {
 
   public colapseSection(): void{
 
-    console.log("Collapse");
-
     const sectionHeight = this.nativeElem.scrollHeight;
     const elementTransition = this.nativeElem.style.transition;
 

@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ButtomComponent implements OnInit {
 
   @Input() buttonColor: string;
+  @Input() label: string;
   
 
   ngOnInit(): void {

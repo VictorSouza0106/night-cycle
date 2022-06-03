@@ -40,13 +40,11 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.authService.isAuthenticate.subscribe((isAuth) => {
       this.isLogged = isAuth;
-      console.log("auth", isAuth);
 
       this.tawkService.SetChatVisibility(isAuth);
     });
 
     this.windowService.isMobile.subscribe((isMobile) => {
-      console.log(isMobile);
       
       this.isMobile = isMobile;
     })
