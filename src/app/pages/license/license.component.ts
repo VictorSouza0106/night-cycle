@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { PaymentDialogComponent } from 'src/app/components/payment-dialog/payment-dialog.component';
 import { TranslatePipe } from 'src/app/pipes/translate.pipe';
 import { ILicense } from '../pages.interface';
 
@@ -14,7 +16,8 @@ export class LicenseComponent implements OnInit {
   public licenses: ILicense[];
 
   constructor(
-    private translate: TranslatePipe
+    private translate: TranslatePipe,
+    private dialog: MatDialog,
   ) {}
 
   ngOnInit(): void {
@@ -23,6 +26,12 @@ export class LicenseComponent implements OnInit {
 
   private downloadLicenses(): void{
     console.log('Not implemented -> DownloadLicenses');
+  }
+
+  public openPayment(): void {
+    this.dialog.open(PaymentDialogComponent,{
+      width: '40vw'
+    });
   }
 
   public setMockData(): boolean {
